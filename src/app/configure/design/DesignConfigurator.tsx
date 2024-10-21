@@ -334,6 +334,7 @@ const DesignConfigurator = ({ configId, imageUrl, imageDimensions }: DesignConfi
                 {formatePrice((BASE_PRICE + options.finish.price + options.material.price) / 100)}
               </p>
               <Button
+                loadingText='Saving'
                 size='sm'
                 onClick={() =>
                   saveConfig({
