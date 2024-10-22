@@ -22,11 +22,9 @@ const DesignPreview = ({ configuration }: { configuration: Configuration }) => {
   const { id } = configuration;
   const { user } = useKindeBrowserClient();
   const [isLoginModalOpen, setIsLoginModalOpen] = useState<boolean>(false);
-  const [showConfetti, setShowConfetti] = useState<boolean>(false);
 
-  useEffect(() => {
-    setShowConfetti(true);
-  });
+  const [showConfetti, setShowConfetti] = useState<boolean>(false);
+  useEffect(() => setShowConfetti(true));
 
   const { color, model, finish, material } = configuration;
 
@@ -59,7 +57,7 @@ const DesignPreview = ({ configuration }: { configuration: Configuration }) => {
       // create payment session
       createPaymentSession({ configId: id });
     } else {
-      // need to login
+      // need to log in
       localStorage.setItem('configurationId', id);
       setIsLoginModalOpen(true);
     }
@@ -78,11 +76,11 @@ const DesignPreview = ({ configuration }: { configuration: Configuration }) => {
 
       <div className='mt-20 flex flex-col items-center md:grid text-sm sm:grid-cols-12 sm:grid-rows-1 sm:gap-x-6 md:gap-x-8 lg:gap-x-12'>
         <div className='md:col-span-4 lg:col-span-3 md:row-span-2 md:row-end-2'>
-          <Phone imgSrc={configuration.croppedImageUrl!} className={cn(`bg-${tw}`, 'max-w-[150px] md:max-w-full')} />
+          <Phone className={cn(`bg-${tw}`, 'max-w-[150px] md:max-w-full')} imgSrc={configuration.croppedImageUrl!} />
         </div>
 
         <div className='mt-6 sm:col-span-9 md:row-end-1'>
-          <h3 className='text-3xl font-bold -tracking-tight text-gray-900'>Your {modelLabel} Case</h3>
+          <h3 className='text-3xl font-bold tracking-tight text-gray-900'>Your {modelLabel} Case</h3>
           <div className='mt-3 flex items-center gap-1.5 text-base'>
             <Check className='h-4 w-4 text-green-500' />
             In stock and ready to ship
@@ -96,7 +94,7 @@ const DesignPreview = ({ configuration }: { configuration: Configuration }) => {
               <ol className='mt-3 text-zinc-700 list-disc list-inside'>
                 <li>Wireless charging compatible</li>
                 <li>TPU shock absorption</li>
-                <li>Packing made from recycled materials</li>
+                <li>Packaging made from recycled materials</li>
                 <li>5 year print warranty</li>
               </ol>
             </div>
@@ -104,7 +102,7 @@ const DesignPreview = ({ configuration }: { configuration: Configuration }) => {
               <p className='font-medium text-zinc-950'>Materials</p>
               <ol className='mt-3 text-zinc-700 list-disc list-inside'>
                 <li>High-quality, durable material</li>
-                <li>Scratch and fingerprint resistant coating</li>
+                <li>Scratch- and fingerprint resistant coating</li>
               </ol>
             </div>
           </div>
@@ -113,7 +111,7 @@ const DesignPreview = ({ configuration }: { configuration: Configuration }) => {
             <div className='bg-gray-50 p-6 sm:rounded-lg sm:p-8'>
               <div className='flow-root text-sm'>
                 <div className='flex items-center justify-between py-1 mt-2'>
-                  <p className='text-gray-600'>Base Price</p>
+                  <p className='text-gray-600'>Base price</p>
                   <p className='font-medium text-gray-900'>{formatePrice(BASE_PRICE / 100)}</p>
                 </div>
 
@@ -137,7 +135,7 @@ const DesignPreview = ({ configuration }: { configuration: Configuration }) => {
 
                 <div className='flex items-center justify-between py-2'>
                   <p className='font-semibold text-gray-900'>Order total</p>
-                  <p className='font-semibold text-gray-800'>{formatePrice(totalPrice / 100)}</p>
+                  <p className='font-semibold text-gray-900'>{formatePrice(totalPrice / 100)}</p>
                 </div>
               </div>
             </div>
